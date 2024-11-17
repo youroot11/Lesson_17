@@ -33,13 +33,13 @@ public class BaseTest {
                 .baseUri("https://postman-echo.com/get")
                 .spec(requestSpecification)
                 .when()
-                .get("/get?foo1=bar1&foo2=bar2")
                 .then()
                 .spec(responseSpecification)
                 .statusCode(200)
                 .log().all()
                 .body("args.foo1", equalTo("bar1"))
-                .body("args.foo2", equalTo("bar2"));
+                .body("args.foo2", equalTo("bar2"))
+                .body("url", equalTo("https://postman-echo.com/get"));
     }
 
     @Test
@@ -90,7 +90,7 @@ public class BaseTest {
                 .statusCode(200)
                 .log().all()
                 .body("data", equalTo(RESPONSE))
-                .body("url", equalTo("https://postman-echo.com/put"));;
+                .body("url", equalTo("https://postman-echo.com/put"));
     }
 
     @Test
